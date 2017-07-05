@@ -1,0 +1,16 @@
+{
+  "name": "webpack_react_debug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack",
+      "dev": "webpack-dev-server --devtool eval-source-map --progress --colors --content-base ./build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
