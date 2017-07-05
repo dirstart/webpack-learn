@@ -10,7 +10,8 @@ module.exports = {
 		filename: 'js/bundle.js'
 	},
 	module: {
-		loaders:[{
+		loaders:
+		[{
 			test:/\.js$/,
 			loader:'babel-loader',
 			exclude:path.resolve(__dirname,'/node_modules/'),
@@ -21,6 +22,9 @@ module.exports = {
 		},{
 			test:/\.html$/,
 			loader:'html-loader'
+		},{
+			test:/\.tpl$/,
+			loader:'ejs-loader'
 		},{
 			test:/\.css$/,
 			use:[
@@ -60,6 +64,9 @@ module.exports = {
 					}
 				},'less-loader'
 			]
+		},{
+			test:/\.jpg$/i,
+			loader:'file-loader'
 		}]
 	},
 	plugins: [

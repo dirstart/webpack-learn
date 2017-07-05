@@ -192,7 +192,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(7);
+var	fixUrls = __webpack_require__(9);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -511,7 +511,7 @@ function updateLink (link, options, obj) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_layer_layer_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_common_css__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_common_css__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_common_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__css_common_css__);
 
 
@@ -519,7 +519,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const App=function(){
 	var dom=document.getElementById("app");
 	var layer=new __WEBPACK_IMPORTED_MODULE_0__components_layer_layer_js__["a" /* default */]();
-	dom.innerHTML=layer.tpl;
+	dom.innerHTML=layer.tpl({
+		name:'john',
+		arr:['iphone','huawe']
+	});
+	// 在这个括号中传入数据
 }
 new App();
 
@@ -528,9 +532,9 @@ new App();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_html__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layer_html__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layer_less__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_tpl__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__layer_tpl___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__layer_tpl__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layer_less__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__layer_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__layer_less__);
 
 
@@ -538,25 +542,50 @@ new App();
 function layer(){
 	return {
 		name:'layer',
-		tpl:__WEBPACK_IMPORTED_MODULE_0__layer_html___default.a
+		tpl:__WEBPACK_IMPORTED_MODULE_0__layer_tpl___default.a
 	}
 }
 /* harmony default export */ __webpack_exports__["a"] = (layer);
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"layer\">\r\n\t<div>this is layer</div>\r\n</div>";
+module.exports = function (obj) {
+obj || (obj = {});
+var __t, __p = '', __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="layer">\r\n	<img src="' +
+((__t = (__webpack_require__(5))) == null ? '' : __t) +
+'">\r\n	<div>this is ' +
+((__t = ( name )) == null ? '' : __t) +
+' layer</div>\r\n	';
+ for (var i=0;i<arr.length;i++){ ;
+__p += '\r\n	' +
+((__t = (arr[i])) == null ? '' : __t) +
+'\r\n	';
+ } ;
+__p += '\r\n</div>';
+
+}
+return __p
+}
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__.p + "1ec4c13f0c300fde44de308d11b0a722.jpg";
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(6);
+var content = __webpack_require__(7);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -570,8 +599,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--3-1!../../../node_modules/postcss-loader/lib/index.js??ref--3-2!../../../node_modules/less-loader/dist/index.js!./layer.less", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js??ref--3-1!../../../node_modules/postcss-loader/lib/index.js??ref--3-2!../../../node_modules/less-loader/dist/index.js!./layer.less");
+		module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--4-1!../../../node_modules/postcss-loader/lib/index.js??ref--4-2!../../../node_modules/less-loader/dist/index.js!./layer.less", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js??ref--4-1!../../../node_modules/postcss-loader/lib/index.js??ref--4-2!../../../node_modules/less-loader/dist/index.js!./layer.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -581,7 +610,7 @@ if(false) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
@@ -589,13 +618,19 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, ".flex{display:-webkit-box;display:-ms-flexbox;display:flex}.layer{width:600px;height:200px;background-color:#ff0}.layer>div{width:400px;height:100px;background-color:red}", ""]);
+exports.push([module.i, ".flex{display:-webkit-box;display:-ms-flexbox;display:flex}.layer{width:600px;height:200px;background-color:#ff0}.layer>div{width:400px;height:100px;background-image:url(" + __webpack_require__(8) + ")}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 7 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "2d91462ba7ca01cddfa5357b296b8d25.jpg";
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 
@@ -690,13 +725,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(9);
+var content = __webpack_require__(11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -710,8 +745,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js??ref--2-1!../../node_modules/postcss-loader/lib/index.js??ref--2-2!./common.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js??ref--2-1!../../node_modules/postcss-loader/lib/index.js??ref--2-2!./common.css");
+		module.hot.accept("!!../../node_modules/css-loader/index.js??ref--3-1!../../node_modules/postcss-loader/lib/index.js??ref--3-2!./common.css", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js??ref--3-1!../../node_modules/postcss-loader/lib/index.js??ref--3-2!./common.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -721,7 +756,7 @@ if(false) {
 }
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(undefined);
