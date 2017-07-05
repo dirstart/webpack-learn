@@ -1,3 +1,3 @@
 
 	var oDiv=document.getElementById("content");
-	oDiv.textContent="雷布斯你好";
+	oDiv.innerHTML="雷布ddd斯你好";

@@ -10,17 +10,12 @@ const webpack=require('webpack');
 module.exports={
 	context:__dirname,
 	entry:[
-		'react-hot-loader/patch',
 		'./app/index.js'
 	],
 	output:{
 		path:resolve(__dirname,'/build'),
-		filename:"bundle.js",
-		publicPath:"/"
-	},
-	devServer:{
-		contentBase:resolve(__dirname,'/build'),
-		hot:true
+		filename:"bundle.js"
+		// publicPath:"/"
 	}
 }
 // module.exports={

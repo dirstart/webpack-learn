@@ -1,10 +1,10 @@
 require("./components/header.js");
 
 document.write("me");
-document.write("what");
+document.write("what fuck");
 
 var oDiv=document.createElement('div');
-oDiv.innerHTML="test for god,test for reload,for test,ttt";
+oDiv.innerHTML+="test for god,test for reload,for test,ttt";
 oDiv.innerHTML+="这样就不是整个页面刷新了";
 var oBody=document.getElementsByTagName("body")[0];
 oBody.appendChild(oDiv);
